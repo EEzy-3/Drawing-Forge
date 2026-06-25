@@ -17,7 +17,6 @@
     </div>
   </div>
 </template>
-
 <script setup lang="ts">
 import { useEditor } from '@/entities/editor';
 import { EditorToolbar } from '@/widgets/toolbar';

@@ -1,6 +1,31 @@
 # Drawing Forge
 
-Профессиональный canvas-редактор. Пять инструментов рисования, история действий (Undo/Redo) и современный UI.
+Canvas-редактор на Vue 3 + TypeScript. Пять инструментов рисования, история действий (Undo/Redo) и современный UI.
+
+## Стек
+
+- Vue 3 (Composition API)
+- TypeScript
+- Canvas API
+- Tailwind CSS v4
+- Vite
+- Vitest + Vue Test Utils
+- FSD (Feature-Sliced Design)
+
+## Запуск
+
+```sh
+npm install
+npm run dev
+```
+
+```sh
+npm run build    # type-check + production build
+npm run test     # unit-тесты (watch)
+npm run test:run # unit-тесты (один прогон)
+npm run lint
+npm run preview  # предпросмотр production-сборки
+```
 
 ## Инструменты
 
@@ -13,8 +38,6 @@
 | Ластик        | `EraserTool`    | Свободное стирание (`destination-out`) |
 
 Фигуры с превью (`LineTool`, `RectangleTool`, `CircleTool`) наследуют базовый класс `PreviewShapeTool` — общая логика snapshot → restore → draw, у каждого инструмента только метод `drawShape()`.
-
-```
 
 ### Разделение shared и entities
 
@@ -49,11 +72,9 @@
 ### Поток рисования
 
 ```
-
 pointerdown → CanvasEngine сохраняет снимок «до» → ITool.onPointerDown
 pointermove → ITool.onPointerMove (фигуры: превью через restoreSnapshot)
-pointerup → ITool.onPointerUp → SnapshotCommand в CommandHistory
-
+pointerup   → ITool.onPointerUp → SnapshotCommand в CommandHistory
 ```
 
 ## Как добавить новый инструмент
@@ -62,4 +83,3 @@ pointerup → ITool.onPointerUp → SnapshotCommand в CommandHistory
 2. Добавить `case` в `ToolFactory`.
 3. Расширить union `ToolType` в `shared/types/tool.ts`.
 4. Добавить иконку в `shared/ui/icons/` и запись в `widgets/toolbar/ui/EditorToolbar.vue`.
-```
