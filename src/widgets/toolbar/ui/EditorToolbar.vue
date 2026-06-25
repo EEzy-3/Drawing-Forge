@@ -47,7 +47,16 @@
 import type { Component } from 'vue';
 import { BrushSettings } from '@/features/brush-settings';
 import { Button } from '@/shared/ui/button';
-import { IconBrush, IconLine, IconRedo, IconTrash, IconUndo } from '@/shared/ui/icons';
+import {
+  IconBrush,
+  IconCircle,
+  IconEraser,
+  IconLine,
+  IconRectangle,
+  IconRedo,
+  IconTrash,
+  IconUndo,
+} from '@/shared/ui/icons';
 import type { BrushSettings as BrushSettingsType, ToolType } from '@/shared/types';
 
 defineProps<{
@@ -68,5 +77,8 @@ const emit = defineEmits<{
 const tools: { type: ToolType; label: string; icon: Component }[] = [
   { type: 'brush', label: 'Brush', icon: IconBrush },
   { type: 'line', label: 'Line', icon: IconLine },
+  { type: 'rectangle', label: 'Rectangle', icon: IconRectangle },
+  { type: 'circle', label: 'Circle', icon: IconCircle },
+  { type: 'eraser', label: 'Eraser', icon: IconEraser },
 ];
 </script>

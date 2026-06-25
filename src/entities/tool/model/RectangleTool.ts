@@ -1,8 +1,8 @@
-import { PreviewShapeTool } from '../lib';
+import { getNormalizedRect, PreviewShapeTool } from '../lib';
 import type { ToolContext } from '@/shared/lib/tool';
 import type { BrushSettings, Point } from '@/shared/types';
 
-export class LineTool extends PreviewShapeTool {
+export class RectangleTool extends PreviewShapeTool {
   constructor(context: ToolContext) {
     super(context);
   }
@@ -13,9 +13,10 @@ export class LineTool extends PreviewShapeTool {
     start: Point,
     end: Point,
   ): void {
+    const { x, y, width, height } = getNormalizedRect(start, end);
+
     ctx.beginPath();
-    ctx.moveTo(start.x, start.y);
-    ctx.lineTo(end.x, end.y);
+    ctx.rect(x, y, width, height);
     ctx.stroke();
   }
 }
