@@ -1,9 +1,9 @@
 <template>
-  <header class="flex flex-wrap items-center gap-4 border-b border-zinc-800 bg-zinc-900 px-4 py-3">
-    <div class="flex items-center gap-2">
-      <img src="/favicon.ico" alt="" class="w-10" />
+  <header class="flex gap-4 border-b border-zinc-800 bg-zinc-900 px-4 py-3">
+    <div class="flex gap-2 border-r px-2">
+      <img src="/favicon.ico" alt="" class="w-10 h-10" />
 
-      <h1 class="text-base font-semibold text-white">Drawing Forge</h1>
+      <h1 class="font-semibold">Drawing Forge</h1>
     </div>
 
     <div class="flex flex-col gap-2">
