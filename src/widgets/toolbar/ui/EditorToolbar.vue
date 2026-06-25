@@ -1,9 +1,11 @@
 <template>
   <header class="flex gap-4 border-b border-zinc-800 bg-zinc-900 px-4 py-3">
-    <div class="flex gap-2 border-r px-2">
-      <img src="/favicon.ico" alt="" class="w-10 h-10" />
+    <div class="flex items-start">
+      <div class="flex items-center gap-2">
+        <img src="/favicon.ico" alt="" class="w-10 h-10" />
 
-      <h1 class="font-semibold">Drawing Forge</h1>
+        <h1 class="font-semibold">Drawing Forge</h1>
+      </div>
     </div>
 
     <div class="flex flex-col gap-2">
@@ -18,6 +20,10 @@
 
         <Button size="icon" variant="ghost" title="Clear" aria-label="Clear" @click="emit('clear')">
           <IconTrash />
+        </Button>
+
+        <Button size="icon" variant="ghost" title="Export PNG" aria-label="Export PNG" @click="emit('exportPng')">
+          <IconDownload />
         </Button>
       </div>
 
@@ -50,6 +56,7 @@ import { Button } from '@/shared/ui/button';
 import {
   IconBrush,
   IconCircle,
+  IconDownload,
   IconEraser,
   IconLine,
   IconRectangle,
@@ -72,6 +79,7 @@ const emit = defineEmits<{
   undo: [];
   redo: [];
   clear: [];
+  exportPng: [];
 }>();
 
 const tools: { type: ToolType; label: string; icon: Component }[] = [

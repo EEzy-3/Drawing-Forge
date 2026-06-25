@@ -9,6 +9,7 @@
       @undo="undo"
       @redo="redo"
       @clear="clear"
+      @export-png="exportPng"
     />
 
     <div class="flex flex-1 items-center justify-center p-6">
@@ -21,5 +22,6 @@
 import { useEditor } from '@/entities/editor';
 import { EditorToolbar } from '@/widgets/toolbar';
 
-const { canvasRef, brushSettings, activeTool, canUndo, canRedo, undo, redo, clear, selectTool } = useEditor();
+const { canvasRef, brushSettings, activeTool, canUndo, canRedo, undo, redo, clear, exportPng, selectTool } =
+  useEditor();
 </script>

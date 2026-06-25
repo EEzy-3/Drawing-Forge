@@ -1,5 +1,6 @@
 export const CANVAS_WIDTH = 960;
 export const CANVAS_HEIGHT = 540;
+export const EXPORT_FILENAME = 'drawing-forge.png';
 
 export const DEFAULT_BRUSH = {
   color: '#1e1e1e',

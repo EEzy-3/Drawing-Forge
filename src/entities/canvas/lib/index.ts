@@ -1,0 +1,1 @@
+export { exportToPng } from './exportToPng';

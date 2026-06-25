@@ -1,5 +1,6 @@
 import { onMounted, onUnmounted, reactive, ref } from 'vue';
 import { CanvasEngine, SnapshotCommand } from '@/entities/canvas';
+import { useExportPng } from '@/features/export-png';
 import { useSelectTool } from '@/features/select-tool';
 import { useUndoRedo } from '@/features/undo-redo';
 import { CANVAS_HEIGHT, CANVAS_WIDTH, DEFAULT_BRUSH } from '@/shared/config';
@@ -18,6 +19,7 @@ export function useEditor() {
     historyRevision.value++;
   });
   const { canUndo, canRedo, undo, redo } = useUndoRedo(history, historyRevision);
+  const { exportPng } = useExportPng(canvasRef);
 
   let engine: CanvasEngine | null = null;
   let unbindPointer: (() => void) | null = null;
@@ -102,6 +104,7 @@ export function useEditor() {
     undo,
     redo,
     clear,
+    exportPng,
     selectTool,
   };
 }

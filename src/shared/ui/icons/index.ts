@@ -1,5 +1,6 @@
 export { default as IconBrush } from './IconBrush.vue';
 export { default as IconCircle } from './IconCircle.vue';
+export { default as IconDownload } from './IconDownload.vue';
 export { default as IconEraser } from './IconEraser.vue';
 export { default as IconLine } from './IconLine.vue';
 export { default as IconRectangle } from './IconRectangle.vue';
