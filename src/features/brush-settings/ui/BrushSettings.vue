@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { BrushSettings } from '@/shared/types/tool'
+import type { BrushSettings } from '@/shared/types'
 
 const settings = defineModel<BrushSettings>('settings', { required: true })
 </script>

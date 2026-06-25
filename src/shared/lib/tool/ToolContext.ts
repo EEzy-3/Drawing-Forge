@@ -1,4 +1,4 @@
-import type { BrushSettings } from '@/shared/types/tool'
+import type { BrushSettings } from '@/shared/types'
 
 export interface ToolContext {
   ctx: CanvasRenderingContext2D

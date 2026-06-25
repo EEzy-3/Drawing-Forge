@@ -1,8 +1,7 @@
 import { BrushTool } from './BrushTool'
 import { LineTool } from './LineTool'
-import type { ITool } from '@/shared/lib/tool/ITool'
-import type { ToolContext } from '@/shared/lib/tool/ToolContext'
-import type { ToolType } from '@/shared/types/tool'
+import type { ITool, ToolContext } from '@/shared/lib/tool'
+import type { ToolType } from '@/shared/types'
 
 export class ToolFactory {
   create(type: ToolType, context: ToolContext): ITool {

@@ -1,7 +1,6 @@
-import { applyStrokeStyle } from '@/entities/tool/lib/applyStrokeStyle'
-import type { ITool } from '@/shared/lib/tool/ITool'
-import type { ToolContext } from '@/shared/lib/tool/ToolContext'
-import type { Point } from '@/shared/types/geometry'
+import { applyStrokeStyle } from '../lib'
+import type { ITool, ToolContext } from '@/shared/lib/tool'
+import type { Point } from '@/shared/types'
 
 export class LineTool implements ITool {
   readonly cursor = 'crosshair'
@@ -19,19 +18,27 @@ export class LineTool implements ITool {
   }
 
   onPointerMove(point: Point): void {
-    if (!this.start || !this.baseSnapshot) return
+    if (!this.start || !this.baseSnapshot) {
+      return
+    }
+
     this.end = point
     this.preview()
   }
 
   onPointerUp(): void {
-    if (!this.start || !this.end || !this.baseSnapshot) return
+    if (!this.start || !this.end || !this.baseSnapshot) {
+      return
+    }
+
     this.preview()
     this.reset()
   }
 
   private preview(): void {
-    if (!this.start || !this.end || !this.baseSnapshot) return
+    if (!this.start || !this.end || !this.baseSnapshot) {
+      return
+    }
 
     this.context.restoreSnapshot(this.baseSnapshot)
     const { ctx, settings } = this.context

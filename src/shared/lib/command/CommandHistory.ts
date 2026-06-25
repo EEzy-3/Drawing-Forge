@@ -20,14 +20,22 @@ export class CommandHistory {
 
   undo(): void {
     const command = this.undoStack.pop()
-    if (!command) return
+
+    if (!command) {
+      return
+    }
+
     command.undo()
     this.redoStack.push(command)
   }
 
   redo(): void {
     const command = this.redoStack.pop()
-    if (!command) return
+    
+    if (!command) {
+      return
+    }
+
     command.execute()
     this.undoStack.push(command)
   }

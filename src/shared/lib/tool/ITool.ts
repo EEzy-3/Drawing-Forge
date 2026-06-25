@@ -1,4 +1,4 @@
-import type { Point } from '@/shared/types/geometry'
+import type { Point } from '@/shared/types'
 
 export interface ITool {
   readonly cursor: string

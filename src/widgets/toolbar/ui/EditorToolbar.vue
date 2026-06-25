@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import BrushSettings from '@/features/brush-settings/ui/BrushSettings.vue'
-import type { BrushSettings as BrushSettingsType } from '@/shared/types/tool'
-import type { ToolType } from '@/shared/types/tool'
+import { BrushSettings } from '@/features/brush-settings'
+import type { BrushSettings as BrushSettingsType, ToolType } from '@/shared/types'
 
 defineProps<{
   activeTool: ToolType

@@ -1,7 +1,6 @@
-import { applyStrokeStyle } from '@/entities/tool/lib/applyStrokeStyle'
-import type { ITool } from '@/shared/lib/tool/ITool'
-import type { ToolContext } from '@/shared/lib/tool/ToolContext'
-import type { Point } from '@/shared/types/geometry'
+import { applyStrokeStyle } from '../lib'
+import type { ITool, ToolContext } from '@/shared/lib/tool'
+import type { Point } from '@/shared/types'
 
 export class BrushTool implements ITool {
   readonly cursor = 'crosshair'
@@ -18,7 +17,10 @@ export class BrushTool implements ITool {
   }
 
   onPointerMove(point: Point): void {
-    if (!this.drawing) return
+    if (!this.drawing) {
+      return
+    }
+    
     this.context.ctx.lineTo(point.x, point.y)
     this.context.ctx.stroke()
   }

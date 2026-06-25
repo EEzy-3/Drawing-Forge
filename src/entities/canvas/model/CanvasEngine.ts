@@ -1,5 +1,5 @@
-import type { ITool } from '@/shared/lib/tool/ITool'
-import type { Point } from '@/shared/types/geometry'
+import type { ITool } from '@/shared/lib/tool'
+import type { Point } from '@/shared/types'
 
 export class CanvasEngine {
   private tool: ITool | null = null
@@ -20,7 +20,10 @@ export class CanvasEngine {
     canvas.style.height = `${height}px`
 
     const ctx = canvas.getContext('2d')
-    if (!ctx) throw new Error('Canvas 2D context is not available')
+    
+    if (!ctx) {
+      throw new Error('Canvas 2D context is not available')
+    }
 
     ctx.scale(dpr, dpr)
     return new CanvasEngine(canvas, ctx)

@@ -1,7 +1,7 @@
 import { ref } from 'vue'
-import { ToolFactory } from '@/entities/tool/model/ToolFactory'
-import type { CanvasEngine } from '@/entities/canvas/model/CanvasEngine'
-import type { BrushSettings, ToolType } from '@/shared/types/tool'
+import type { CanvasEngine } from '@/entities/canvas'
+import { ToolFactory } from '@/entities/tool'
+import type { BrushSettings, ToolType } from '@/shared/types'
 
 const factory = new ToolFactory()
 

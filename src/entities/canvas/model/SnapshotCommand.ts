@@ -1,4 +1,4 @@
-import type { ICommand } from '@/shared/lib/command/ICommand'
+import type { ICommand } from '@/shared/lib/command'
 
 export class SnapshotCommand implements ICommand {
   constructor(

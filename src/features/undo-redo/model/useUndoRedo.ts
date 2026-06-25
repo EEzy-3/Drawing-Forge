@@ -1,5 +1,5 @@
 import { computed } from 'vue'
-import { CommandHistory } from '@/shared/lib/command/CommandHistory'
+import { CommandHistory } from '@/shared/lib/command'
 
 export function useUndoRedo(history: CommandHistory) {
   const canUndo = computed(() => history.canUndo)

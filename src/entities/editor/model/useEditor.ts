@@ -1,11 +1,10 @@
 import { onMounted, onUnmounted, reactive, ref } from 'vue'
-import { CanvasEngine } from '@/entities/canvas/model/CanvasEngine'
-import { SnapshotCommand } from '@/entities/canvas/model/SnapshotCommand'
-import { useSelectTool } from '@/features/select-tool/model/useSelectTool'
-import { useUndoRedo } from '@/features/undo-redo/model/useUndoRedo'
-import { CANVAS_HEIGHT, CANVAS_WIDTH, DEFAULT_BRUSH } from '@/shared/config/canvas'
-import { CommandHistory } from '@/shared/lib/command/CommandHistory'
-import type { BrushSettings, ToolType } from '@/shared/types/tool'
+import { CanvasEngine, SnapshotCommand } from '@/entities/canvas'
+import { useSelectTool } from '@/features/select-tool'
+import { useUndoRedo } from '@/features/undo-redo'
+import { CANVAS_HEIGHT, CANVAS_WIDTH, DEFAULT_BRUSH } from '@/shared/config'
+import { CommandHistory } from '@/shared/lib/command'
+import type { BrushSettings, ToolType } from '@/shared/types'
 
 export function useEditor() {
   const canvasRef = ref<HTMLCanvasElement | null>(null)
@@ -25,14 +24,20 @@ export function useEditor() {
   const activeTool = ref<ToolType>('brush')
 
   function pushSnapshot(before: ImageData, after: ImageData): void {
-    if (!engine) return
+    if (!engine) {
+      return;
+    }
+
     history.execute(
       new SnapshotCommand((data) => engine!.restoreSnapshot(data), before, after),
     )
   }
 
   function clear(): void {
-    if (!engine) return
+    if (!engine) {
+      return
+    }
+
     const before = engine.getSnapshot()
     engine.clear()
     pushSnapshot(before, engine.getSnapshot())
@@ -40,7 +45,10 @@ export function useEditor() {
 
   onMounted(() => {
     const canvas = canvasRef.value
-    if (!canvas) return
+
+    if (!canvas) {
+      return
+    }
 
     engine = CanvasEngine.fromElement(canvas, CANVAS_WIDTH, CANVAS_HEIGHT)
     const { selectTool } = useSelectTool(engine, brushSettings)
@@ -48,11 +56,16 @@ export function useEditor() {
     selectTool('brush')
 
     const finishStroke = () => {
-      if (!drawing || !engine) return
-      drawing = false
+      if (!drawing || !engine) {
+        return
+      }
 
+      drawing = false
       const before = engine.consumeSnapshotBefore()
-      if (!before) return
+      
+      if (!before) {
+        return
+      }
 
       pushSnapshot(before, engine.getSnapshot())
     }
