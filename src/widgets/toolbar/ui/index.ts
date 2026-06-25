@@ -1,1 +1,1 @@
-export { default as EditorToolbar } from './EditorToolbar.vue'
+export { default as EditorToolbar } from './EditorToolbar.vue';

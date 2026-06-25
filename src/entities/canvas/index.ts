@@ -1,1 +1,1 @@
-export { CanvasEngine, SnapshotCommand } from './model'
+export { CanvasEngine, SnapshotCommand } from './model';

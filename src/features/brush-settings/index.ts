@@ -1,1 +1,1 @@
-export { BrushSettings } from './ui'
+export { BrushSettings } from './ui';

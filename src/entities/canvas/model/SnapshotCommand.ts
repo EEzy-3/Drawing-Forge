@@ -1,4 +1,4 @@
-import type { ICommand } from '@/shared/lib/command'
+import type { ICommand } from '@/shared/lib/command';
 
 export class SnapshotCommand implements ICommand {
   constructor(
@@ -8,10 +8,10 @@ export class SnapshotCommand implements ICommand {
   ) {}
 
   execute(): void {
-    this.restore(this.after)
+    this.restore(this.after);
   }
 
   undo(): void {
-    this.restore(this.before)
+    this.restore(this.before);
   }
 }

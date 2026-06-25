@@ -1,1 +1,1 @@
-export { ToolFactory } from './model'
+export { ToolFactory } from './model';

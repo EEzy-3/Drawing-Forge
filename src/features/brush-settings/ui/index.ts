@@ -1,1 +1,1 @@
-export { default as BrushSettings } from './BrushSettings.vue'
+export { default as BrushSettings } from './BrushSettings.vue';

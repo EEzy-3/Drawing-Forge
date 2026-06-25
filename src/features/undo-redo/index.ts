@@ -1,1 +1,1 @@
-export { useUndoRedo } from './model'
+export { useUndoRedo } from './model';

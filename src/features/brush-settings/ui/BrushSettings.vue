@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { BrushSettings } from '@/shared/types'
+import type { BrushSettings } from '@/shared/types';
 
-const settings = defineModel<BrushSettings>('settings', { required: true })
+const settings = defineModel<BrushSettings>('settings', { required: true });
 </script>
 
 <template>
@@ -17,13 +17,7 @@ const settings = defineModel<BrushSettings>('settings', { required: true })
 
     <label class="flex items-center gap-2 text-sm text-zinc-400">
       Толщина
-      <input
-        v-model.number="settings.size"
-        type="range"
-        min="2"
-        max="40"
-        class="w-28 accent-violet-500"
-      />
+      <input v-model.number="settings.size" type="range" min="2" max="40" class="w-28 accent-violet-500" />
       <span class="w-6 text-right text-zinc-300">{{ settings.size }}</span>
     </label>
   </div>

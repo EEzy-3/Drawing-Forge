@@ -1,1 +1,1 @@
-export { useEditor } from './model'
+export { useEditor } from './model';

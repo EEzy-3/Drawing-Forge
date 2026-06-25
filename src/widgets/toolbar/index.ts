@@ -1,1 +1,1 @@
-export { EditorToolbar } from './ui'
+export { EditorToolbar } from './ui';

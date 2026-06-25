@@ -1,21 +1,21 @@
-import { computed } from 'vue'
-import { CommandHistory } from '@/shared/lib/command'
+import { computed } from 'vue';
+import { CommandHistory } from '@/shared/lib/command';
 
 export function useUndoRedo(history: CommandHistory) {
-  const canUndo = computed(() => history.canUndo)
-  const canRedo = computed(() => history.canRedo)
+  const canUndo = computed(() => history.canUndo);
+  const canRedo = computed(() => history.canRedo);
 
   function undo(): void {
-    history.undo()
+    history.undo();
   }
 
   function redo(): void {
-    history.redo()
+    history.redo();
   }
 
   function clearHistory(): void {
-    history.clear()
+    history.clear();
   }
 
-  return { canUndo, canRedo, undo, redo, clearHistory }
+  return { canUndo, canRedo, undo, redo, clearHistory };
 }

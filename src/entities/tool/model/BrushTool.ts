@@ -1,32 +1,32 @@
-import { applyStrokeStyle } from '../lib'
-import type { ITool, ToolContext } from '@/shared/lib/tool'
-import type { Point } from '@/shared/types'
+import { applyStrokeStyle } from '../lib';
+import type { ITool, ToolContext } from '@/shared/lib/tool';
+import type { Point } from '@/shared/types';
 
 export class BrushTool implements ITool {
-  readonly cursor = 'crosshair'
+  readonly cursor = 'crosshair';
 
-  private drawing = false
+  private drawing = false;
 
   constructor(private readonly context: ToolContext) {}
 
   onPointerDown(point: Point): void {
-    this.drawing = true
-    applyStrokeStyle(this.context.ctx, this.context.settings)
-    this.context.ctx.beginPath()
-    this.context.ctx.moveTo(point.x, point.y)
+    this.drawing = true;
+    applyStrokeStyle(this.context.ctx, this.context.settings);
+    this.context.ctx.beginPath();
+    this.context.ctx.moveTo(point.x, point.y);
   }
 
   onPointerMove(point: Point): void {
     if (!this.drawing) {
-      return
+      return;
     }
-    
-    this.context.ctx.lineTo(point.x, point.y)
-    this.context.ctx.stroke()
+
+    this.context.ctx.lineTo(point.x, point.y);
+    this.context.ctx.stroke();
   }
 
   onPointerUp(): void {
-    this.drawing = false
-    this.context.ctx.closePath()
+    this.drawing = false;
+    this.context.ctx.closePath();
   }
 }

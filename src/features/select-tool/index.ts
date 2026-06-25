@@ -1,1 +1,1 @@
-export { useSelectTool } from './model'
+export { useSelectTool } from './model';

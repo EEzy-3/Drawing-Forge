@@ -28,7 +28,6 @@ npm run lint
 ```
 src/
 ├── app/           # точка входа, глобальные стили
-├── pages/         # страницы (editor)
 ├── widgets/       # составные UI-блоки (toolbar, canvas-area)
 ├── features/      # пользовательские сценарии (выбор инструмента, undo/redo, настройки кисти)
 ├── entities/      # бизнес-сущности (canvas, tool)

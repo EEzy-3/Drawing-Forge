@@ -1,1 +1,1 @@
-export { applyStrokeStyle } from './applyStrokeStyle'
+export { applyStrokeStyle } from './applyStrokeStyle';

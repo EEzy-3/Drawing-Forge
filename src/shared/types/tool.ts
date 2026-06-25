@@ -1,6 +1,6 @@
-export type ToolType = 'brush' | 'line'
+export type ToolType = 'brush' | 'line';
 
 export interface BrushSettings {
-  color: string
-  size: number
+  color: string;
+  size: number;
 }

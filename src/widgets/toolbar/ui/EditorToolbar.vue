@@ -1,26 +1,26 @@
 <script setup lang="ts">
-import { BrushSettings } from '@/features/brush-settings'
-import type { BrushSettings as BrushSettingsType, ToolType } from '@/shared/types'
+import { BrushSettings } from '@/features/brush-settings';
+import type { BrushSettings as BrushSettingsType, ToolType } from '@/shared/types';
 
 defineProps<{
-  activeTool: ToolType
-  canUndo: boolean
-  canRedo: boolean
-}>()
+  activeTool: ToolType;
+  canUndo: boolean;
+  canRedo: boolean;
+}>();
 
-const brushSettings = defineModel<BrushSettingsType>('brushSettings', { required: true })
+const brushSettings = defineModel<BrushSettingsType>('brushSettings', { required: true });
 
 const emit = defineEmits<{
-  selectTool: [type: ToolType]
-  undo: []
-  redo: []
-  clear: []
-}>()
+  selectTool: [type: ToolType];
+  undo: [];
+  redo: [];
+  clear: [];
+}>();
 
 const tools: { type: ToolType; label: string }[] = [
   { type: 'brush', label: 'Кисть' },
   { type: 'line', label: 'Линия' },
-]
+];
 </script>
 
 <template>
@@ -33,11 +33,7 @@ const tools: { type: ToolType; label: string }[] = [
         :key="tool.type"
         type="button"
         class="rounded-md px-3 py-1.5 text-sm transition-colors"
-        :class="
-          activeTool === tool.type
-            ? 'bg-violet-600 text-white'
-            : 'text-zinc-400 hover:text-white'
-        "
+        :class="activeTool === tool.type ? 'bg-violet-600 text-white' : 'text-zinc-400 hover:text-white'"
         @click="emit('selectTool', tool.type)"
       >
         {{ tool.label }}
