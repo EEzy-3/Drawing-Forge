@@ -1,51 +1,42 @@
 <template>
-  <header class="flex flex-wrap items-center gap-4 border-b border-zinc-800 bg-zinc-900 px-6 py-4">
-    <h1 class="text-lg font-semibold tracking-tight text-white">DrawForge</h1>
+  <header class="flex flex-wrap items-center gap-8 border-b border-zinc-800 bg-zinc-900 px-4 py-4">
+    <div class="flex items-center gap-2">
+      <img src="/favicon.ico" alt="logo" class="w-12" />
 
-    <div class="flex items-center gap-1 rounded-lg bg-zinc-800 p-1">
-      <button
-        v-for="tool in tools"
-        :key="tool.type"
-        type="button"
-        class="rounded-md px-3 py-1.5 text-sm transition-colors"
-        :class="activeTool === tool.type ? 'bg-violet-600 text-white' : 'text-zinc-400 hover:text-white'"
-        @click="emit('selectTool', tool.type)"
-      >
-        {{ tool.label }}
-      </button>
+      <h1 class="text-lg font-semibold">Drawing Forge</h1>
     </div>
 
-    <div class="flex items-center gap-1">
-      <button
-        type="button"
-        class="rounded-md px-3 py-1.5 text-sm text-zinc-300 transition-colors hover:bg-zinc-800 disabled:opacity-40"
-        :disabled="!canUndo"
-        @click="emit('undo')"
-      >
-        Undo
-      </button>
-      <button
-        type="button"
-        class="rounded-md px-3 py-1.5 text-sm text-zinc-300 transition-colors hover:bg-zinc-800 disabled:opacity-40"
-        :disabled="!canRedo"
-        @click="emit('redo')"
-      >
-        Redo
-      </button>
-      <button
-        type="button"
-        class="rounded-md px-3 py-1.5 text-sm text-zinc-300 transition-colors hover:bg-zinc-800"
-        @click="emit('clear')"
-      >
-        Очистить
-      </button>
-    </div>
+    <div class="flex flex-col gap-4">
+      <div class="flex gap-4">
+        <div class="flex items-center gap-1 rounded-lg bg-zinc-800">
+          <Button
+            v-for="tool in tools"
+            :key="tool.type"
+            variant="toggle"
+            color="violet"
+            :active="activeTool === tool.type"
+            @click="emit('selectTool', tool.type)"
+          >
+            {{ tool.label }}
+          </Button>
+        </div>
+    
+        <BrushSettings v-model:settings="brushSettings" />
+      </div>
 
-    <BrushSettings v-model:settings="brushSettings" />
+      <div class="flex items-center gap-1">
+        <Button variant="ghost" :disabled="!canUndo" @click="emit('undo')">Undo</Button>
+  
+        <Button variant="ghost" :disabled="!canRedo" @click="emit('redo')">Redo</Button>
+  
+        <Button variant="ghost" @click="emit('clear')">Clear</Button>
+      </div>
+    </div>
   </header>
 </template>
 <script setup lang="ts">
 import { BrushSettings } from '@/features/brush-settings';
+import { Button } from '@/shared/ui/button';
 import type { BrushSettings as BrushSettingsType, ToolType } from '@/shared/types';
 
 defineProps<{
@@ -64,7 +55,7 @@ const emit = defineEmits<{
 }>();
 
 const tools: { type: ToolType; label: string }[] = [
-  { type: 'brush', label: 'Кисть' },
-  { type: 'line', label: 'Линия' },
+  { type: 'brush', label: 'Brush' },
+  { type: 'line', label: 'Line' },
 ];
 </script>

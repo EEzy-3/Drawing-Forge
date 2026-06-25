@@ -1,8 +1,8 @@
-
 <template>
   <div class="flex items-center gap-4">
     <label class="flex items-center gap-2 text-sm text-zinc-400">
-      Цвет
+      <span>Color</span>
+
       <input
         v-model="settings.color"
         type="color"
@@ -11,13 +11,15 @@
     </label>
 
     <label class="flex items-center gap-2 text-sm text-zinc-400">
-      Толщина
-      <input v-model.number="settings.size" type="range" min="2" max="40" class="w-28 accent-violet-500" />
-      
-      <span class="w-6 text-right text-zinc-300">{{ settings.size }}</span>
+      <span>Width</span>
+
+      <input v-model.number="settings.size" type="range" min="1" max="40" class="w-28 accent-violet-500" />
+
+      <span class="text-zinc-300">{{ settings.size }}</span>
     </label>
   </div>
 </template>
+
 <script setup lang="ts">
 import type { BrushSettings } from '@/shared/types';
 
