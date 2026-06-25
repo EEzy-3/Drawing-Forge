@@ -39,12 +39,18 @@ export class CanvasEngine {
   }
 
   getSnapshot(): ImageData {
-    const { width, height } = this.canvas;
-    return this.ctx.getImageData(0, 0, width, height);
+    this.ctx.save();
+    this.ctx.setTransform(1, 0, 0, 1, 0, 0);
+    const snapshot = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.restore();
+    return snapshot;
   }
 
   restoreSnapshot(data: ImageData): void {
+    this.ctx.save();
+    this.ctx.setTransform(1, 0, 0, 1, 0, 0);
     this.ctx.putImageData(data, 0, 0);
+    this.ctx.restore();
   }
 
   clear(): void {

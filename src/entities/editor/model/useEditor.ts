@@ -13,8 +13,11 @@ export function useEditor() {
     size: DEFAULT_BRUSH.size,
   });
 
-  const history = new CommandHistory();
-  const { canUndo, canRedo, undo, redo } = useUndoRedo(history);
+  const historyRevision = ref(0);
+  const history = new CommandHistory(() => {
+    historyRevision.value++;
+  });
+  const { canUndo, canRedo, undo, redo } = useUndoRedo(history, historyRevision);
 
   let engine: CanvasEngine | null = null;
   let unbindPointer: (() => void) | null = null;

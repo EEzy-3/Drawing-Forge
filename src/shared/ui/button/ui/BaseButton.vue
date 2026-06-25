@@ -1,5 +1,5 @@
 <template>
-  <button type="button" :class="classes" :disabled="disabled">
+  <button type="button" :class="classes" :disabled="disabled" :title="title" :aria-label="ariaLabel">
     <slot />
   </button>
 </template>
@@ -15,6 +15,8 @@ const props = withDefaults(
     variant?: ButtonVariant;
     active?: boolean;
     disabled?: boolean;
+    title?: string;
+    ariaLabel?: string;
   }>(),
   {
     size: 'sm',
@@ -28,6 +30,7 @@ const props = withDefaults(
 const SIZE_CLASSES: Record<ButtonSize, string> = {
   sm: 'px-3 py-1.5 text-sm',
   md: 'px-4 py-2 text-base',
+  icon: 'p-2',
 };
 
 const SOLID_COLOR_CLASSES: Record<ButtonColor, string> = {

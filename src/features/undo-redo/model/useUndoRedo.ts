@@ -1,9 +1,10 @@
-import { computed } from 'vue';
+import { computed, type Ref } from 'vue';
 import { CommandHistory } from '@/shared/lib/command';
 
-export function useUndoRedo(history: CommandHistory) {
-  const canUndo = computed(() => history.canUndo);
-  const canRedo = computed(() => history.canRedo);
+export function useUndoRedo(history: CommandHistory, revision: Ref<number>) {
+  const canUndo = computed(() => revision.value >= 0 && history.canUndo);
+
+  const canRedo = computed(() => revision.value >= 0 && history.canRedo);
 
   function undo(): void {
     history.undo();
